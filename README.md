@@ -17,7 +17,7 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-bower-sync');
 ```
 
-## The bowerSync task
+## The bowersync task
 
 This plugin allows you to synchronize two directories, based on the contents of the **bower.json** file.
 
@@ -26,7 +26,7 @@ This plugin allows you to synchronize two directories, based on the contents of 
 Within your grunt file:
 
 ```js
-bowerSync: {
+bowersync: {
   taskName: {
     files: {
       'your/target/directory': 'bower_components'
@@ -61,4 +61,5 @@ Remark:
   
 ## History
 
+  - **v0.1.3** [2015-09-09] - Change task name.
   - **v0.1.2** [2015-09-09] - Initial().

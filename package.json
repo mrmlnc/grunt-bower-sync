@@ -1,7 +1,7 @@
 {
   "name": "grunt-bower-sync",
   "description": "Synchronizing Bower dependencies, with the possibility of compiling a list",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": {
     "name": "Denis Malinochkin",
     "url": "www.canonium.com"
@@ -12,7 +12,7 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "grunt clean && grunt bowerSync && node test/test.js"
+    "test": "grunt clean && grunt bowersync && node test/test.js"
   },
   "devDependencies": {
     "ava": "^0.1.0",

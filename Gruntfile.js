@@ -29,7 +29,7 @@ module.exports = function(grunt) {
     },
 
     // Configuration to be run (and then tested).
-    bowerSync: {
+    bowersync: {
       options: {
         bowerFile: 'test/fixtures/bower.json'
       },

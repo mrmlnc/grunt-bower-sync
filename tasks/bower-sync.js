@@ -13,7 +13,7 @@ function bowerSync(grunt) {
   var Utils = require('./lib/utils');
   var Fsys = require('./lib/fsys');
 
-  grunt.registerMultiTask('bowerSync', 'Simple copy Bower dependencies in the dest folder.', function() {
+  grunt.registerMultiTask('bowersync', 'Simple copy Bower dependencies in the dest folder.', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       bowerFile: 'bower.json',
