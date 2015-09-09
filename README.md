@@ -36,7 +36,7 @@ bowersync: {
       dependencies: true, // Use when copying `dependencies` section. Default: true
       devDependencies: false, // Use when copying `devDpendencies` section. Default: false
       peerDependencies: false, // Use when copying `peerDependencies` section. Default: false
-      updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
+      updateAndDelete: true, // Remove all files from dest that are not found in src. Default: true
     }
   }
 }
