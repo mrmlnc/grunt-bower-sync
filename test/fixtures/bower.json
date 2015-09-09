@@ -1,0 +1,12 @@
+{
+  "name": "test",
+  "dependencies": {
+    "jquery": "latest"
+  },
+  "devDependencies": {
+    "bootstrap": "latest"
+  },
+  "peerDependencies": {
+    "salvattore": "latest"
+  }
+}
