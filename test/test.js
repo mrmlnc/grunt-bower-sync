@@ -4,10 +4,15 @@ var grunt = require('grunt');
 var test = require('ava');
 var Fsys = require('../tasks/lib/fsys');
 
-test('copyNull | Empty bower.json file (no dependencies)', function(t) {
-  var actual = !(fs.existsSync('tmp/copyNull'));
-  t.is(actual, true);
+test('dirNotExists | The directory src does not exist', function(t) {
+  var actual = fs.existsSync('tmp/dirNotExists');
+  t.is(actual, false);
+  t.end();
+});
 
+test('copyNull | Empty bower.json file (no dependencies)', function(t) {
+  var actual = fs.existsSync('tmp/copyNull');
+  t.is(actual, false);
   t.end();
 });
 

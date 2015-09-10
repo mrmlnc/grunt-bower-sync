@@ -28,7 +28,7 @@ Utils.prototype.getListDependencies = function() {
 
     return bower;
   } else {
-    grunt.log.error('File bower.json was not found.');
+    grunt.log.warn('File bower.json was not found.');
   }
 };
 

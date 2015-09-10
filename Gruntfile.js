@@ -16,7 +16,7 @@ module.exports = function(grunt) {
       all: [
         'Gruntfile.js',
         'tasks/**/*.js',
-        '<%= nodeunit.tests %>'
+        'test/**/*.js'
       ],
       options: {
         jshintrc: '.jshintrc'
@@ -40,6 +40,11 @@ module.exports = function(grunt) {
         },
         files: {
           'tmp/copyNull': 'test/fixtures/bower_components'
+        }
+      },
+      dirNotExists: {
+        files: {
+          'tmp/dirNotExists': 'test/fixtures/ooops'
         }
       },
       copySingle: {
@@ -85,7 +90,8 @@ module.exports = function(grunt) {
       },
       updateOnly: {
         options: {
-          devDependencies: true
+          devDependencies: true,
+          updateAndDelete: false
         },
         files: {
           'tmp/updateOnly': 'test/fixtures/bower_components'
@@ -102,6 +108,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('default', ['jshint', 'clean', 'bowersync']);
 
 };

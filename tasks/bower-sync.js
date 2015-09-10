@@ -27,18 +27,21 @@ function bowerSync(grunt) {
     var done = this.async();
     var utils = new Utils(options);
     var fsys = new Fsys(options);
-
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
-      // Concat specified files.
-      f.src.filter(function(filepath) {
-        var deps = utils.getListDependencies();
-        var copyPromise = fsys.copyDependencies(filepath, f.dest, deps);
-        var removePromise = fsys.removeDependencies(f.dest, deps);
-        Promise.all([copyPromise, removePromise]).then(function() {
-          done();
+      if (f.src.length !== 0) {
+        f.src.forEach(function(filepath) {
+          var deps = utils.getListDependencies();
+          var copyPromise = fsys.copyDependencies(filepath, f.dest, deps);
+          var removePromise = fsys.removeDependencies(f.dest, deps);
+          Promise.all([copyPromise, removePromise]).then(function() {
+            done();
+          });
         });
-      });
+      } else {
+        grunt.log.warn('Source directory not found.');
+        done();
+      }
     });
   });
 }

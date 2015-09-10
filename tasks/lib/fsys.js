@@ -1,6 +1,5 @@
 var path = require('path');
 var fs = require('fs-extra');
-var grunt = require('grunt');
 var Promise = require('promise');
 var arrDiff = require('arr-diff');
 var cwd = process.cwd();
@@ -47,7 +46,7 @@ Fsys.prototype.removeDependencies = function(target, deps) {
     }
 
     // If list not empty
-    if (rmDeps.length !== 0) {
+    if (typeof rmDeps !== 'number') {
       rmDeps.forEach(function(depName) {
         fs.remove(path.join(cwd, target, depName), function(err) {
           if (err) {
