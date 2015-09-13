@@ -1,6 +1,4 @@
-var path = require('path');
 var fs = require('fs');
-var grunt = require('grunt');
 var test = require('ava');
 var Fsys = require('../tasks/lib/fsys');
 

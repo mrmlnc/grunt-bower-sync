@@ -25,11 +25,11 @@ Utils.prototype.getListDependencies = function() {
     if (options.peerDependencies) {
       bower = bower.concat(Object.keys(bowerJson.peerDependencies));
     }
-
-    return bower;
   } else {
     grunt.log.warn('File bower.json was not found.');
   }
+
+  return bower;
 };
 
 module.exports = Utils;
