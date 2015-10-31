@@ -12,7 +12,7 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "xo && rimraf tmp && grunt bowersync && node test/test.js"
+    "test": "xo && rimraf tmp && grunt bowersync && ava test/test.js"
   },
   "devDependencies": {
     "ava": "^0.3.0",
