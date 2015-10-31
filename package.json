@@ -15,10 +15,10 @@
     "test": "xo && rimraf tmp && grunt bowersync && node test/test.js"
   },
   "devDependencies": {
-    "ava": "^0.2.0",
+    "ava": "^0.3.0",
     "grunt": "~0.4.5",
     "rimraf": "^2.4.3",
-    "xo": "^0.8.0"
+    "xo": "^0.10.1"
   },
   "peerDependencies": {
     "grunt": "~0.4.5"
@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "arr-diff": "^1.1.0",
-    "fs-extra": "^0.24.0",
+    "fs-extra": "^0.26.0",
     "promise": "^7.0.4"
   },
   "files": [
