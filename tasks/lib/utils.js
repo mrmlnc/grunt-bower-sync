@@ -1,5 +1,4 @@
 var path = require('path');
-var fs = require('fs-extra');
 var grunt = require('grunt');
 
 function Utils(options) {
@@ -10,7 +9,7 @@ Utils.prototype.getListDependencies = function() {
   var options = this.options;
   var bower = [];
 
-  if (fs.existsSync(options.bowerFile)) {
+  if (grunt.file.exists(options.bowerFile)) {
     var bowerFile = path.join(process.cwd(), options.bowerFile);
     var bowerJson = grunt.file.readJSON(bowerFile);
 
