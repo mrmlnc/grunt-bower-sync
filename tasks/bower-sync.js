@@ -29,7 +29,10 @@ function bowerSync(grunt) {
     var fsys = new Fsys(options);
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
-      if (f.src.length !== 0) {
+      if (f.src.length === 0) {
+        grunt.log.warn('Source directory not found.');
+        done();
+      } else {
         f.src.forEach(function(filepath) {
           var deps = utils.getListDependencies();
           var copyPromise = fsys.copyDependencies(filepath, f.dest, deps);
@@ -38,9 +41,6 @@ function bowerSync(grunt) {
             done();
           });
         });
-      } else {
-        grunt.log.warn('Source directory not found.');
-        done();
       }
     });
   });

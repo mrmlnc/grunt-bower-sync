@@ -10,7 +10,9 @@ function Fsys(options) {
 
 Fsys.prototype.copyDependencies = function(src, target, deps) {
   return new Promise(function(resolve, reject) {
-    if (deps.length !== 0) {
+    if (deps.length === 0) {
+      resolve();
+    } else {
       deps.forEach(function(depName) {
         var srcDir = path.join(cwd, src, depName);
         var targetDir = path.join(cwd, target, depName);
@@ -25,8 +27,6 @@ Fsys.prototype.copyDependencies = function(src, target, deps) {
           }
         });
       });
-    } else {
-      resolve();
     }
   });
 };
@@ -46,7 +46,9 @@ Fsys.prototype.removeDependencies = function(target, deps) {
     }
 
     // If list not empty
-    if (typeof rmDeps !== 'number') {
+    if (typeof rmDeps === 'number') {
+      resolve();
+    } else {
       rmDeps.forEach(function(depName) {
         fs.remove(path.join(cwd, target, depName), function(err) {
           if (err) {
@@ -56,8 +58,6 @@ Fsys.prototype.removeDependencies = function(target, deps) {
           }
         });
       });
-    } else {
-      resolve();
     }
   });
 };
