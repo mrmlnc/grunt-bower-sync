@@ -68,7 +68,8 @@ Remark:
 
 ## History
 
-  - **v0.1.5** [2015-09-13] - Eslint (XO) checking
+  - **v0.2.0** [2015-12-14] - Working with symlinks.
+  - **v0.1.5** [2015-09-13] - Eslint (XO) checking.
   - **v0.1.4** [2015-09-10] - The completion of the task, if the src directory does not exist.
   - **v0.1.3** [2015-09-09] - Change task name.
   - **v0.1.2** [2015-09-09] - Initial().
