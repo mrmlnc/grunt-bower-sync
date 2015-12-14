@@ -32,11 +32,18 @@ bowersync: {
       'your/target/directory': 'bower_components'
     },
     options: {
-      bowerFile: 'bower.json', // The path to the file. Default: 'bower.json'
-      dependencies: true, // Use when copying `dependencies` section. Default: true
-      devDependencies: false, // Use when copying `devDpendencies` section. Default: false
-      peerDependencies: false, // Use when copying `peerDependencies` section. Default: false
-      updateAndDelete: true, // Remove all files from dest that are not found in src. Default: true
+      // The path to the file. Default: 'bower.json'
+      bowerFile: 'bower.json',
+      // Use when copying `dependencies` section. Default: true
+      dependencies: true,
+      // Use when copying `devDpendencies` section. Default: false
+      devDependencies: false,
+      // Use when copying `peerDependencies` section. Default: false
+      peerDependencies: false,
+      // Remove all files from dest that are not found in src. Default: true
+      updateAndDelete: true,
+      // Create symlinks to dependencies, instead of copying them. Default: false
+      symlink: false
     }
   }
 }

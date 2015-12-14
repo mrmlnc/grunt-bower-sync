@@ -44,6 +44,16 @@ module.exports = function(grunt) {
           'tmp/copyMultiple': 'test/fixtures/bower_components'
         }
       },
+      symlink: {
+        options: {
+          devDependencies: true,
+          peerDependencies: true,
+          symlink: true
+        },
+        files: {
+          'tmp/symlink': 'test/fixtures/bower_components'
+        }
+      },
       removeSingle: {
         options: {
           devDependencies: true,
@@ -60,6 +70,16 @@ module.exports = function(grunt) {
         },
         files: {
           'tmp/removeMultiple': 'test/fixtures/bower_components'
+        }
+      },
+      removeSymlinks: {
+        options: {
+          devDependencies: true,
+          peerDependencies: true,
+          symlink: true
+        },
+        files: {
+          'tmp/removeSymlink': 'test/fixtures/bower_components'
         }
       },
       removeAll: {

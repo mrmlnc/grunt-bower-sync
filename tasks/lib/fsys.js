@@ -9,6 +9,8 @@ function Fsys(options) {
 }
 
 Fsys.prototype.copyDependencies = function(src, target, deps) {
+  var options = this.options;
+
   return new Promise(function(resolve, reject) {
     if (deps.length === 0) {
       resolve();
@@ -17,15 +19,25 @@ Fsys.prototype.copyDependencies = function(src, target, deps) {
         var srcDir = path.join(cwd, src, depName);
         var targetDir = path.join(cwd, target, depName);
 
-        fs.copy(srcDir, targetDir, {
-          clobber: true
-        }, function(err) {
-          if (err) {
-            reject(err);
-          } else {
-            resolve();
-          }
-        });
+        if (options.symlink) {
+          fs.ensureSymlink(srcDir, targetDir, function(err) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve();
+            }
+          });
+        } else {
+          fs.copy(srcDir, targetDir, {
+            clobber: true
+          }, function(err) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve();
+            }
+          });
+        }
       });
     }
   });

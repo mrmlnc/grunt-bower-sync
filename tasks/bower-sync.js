@@ -20,7 +20,8 @@ function bowerSync(grunt) {
       dependencies: true,
       devDependencies: false,
       peerDependencies: false,
-      updateAndDelete: true
+      updateAndDelete: true,
+      symlink: false
     });
 
     // Initialization Utilities
