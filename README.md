@@ -2,6 +2,8 @@
 
 > Synchronizing Bower dependencies, with the possibility of compiling a list
 
+[![Build Status](https://travis-ci.org/mrmlnc/grunt-bower-sync.svg)](https://travis-ci.org/mrmlnc/grunt-bower-sync)
+
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
 
