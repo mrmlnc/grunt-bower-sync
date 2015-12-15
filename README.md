@@ -2,7 +2,10 @@
 
 > Synchronizing Bower dependencies, with the possibility of compiling a list
 
-[![Build Status](https://travis-ci.org/mrmlnc/grunt-bower-sync.svg)](https://travis-ci.org/mrmlnc/grunt-bower-sync)
+[![Travis](https://img.shields.io/travis/mrmlnc/grunt-bower-sync.svg?style=flat-square)](https://travis-ci.org/mrmlnc/grunt-bower-sync)
+[![NPM version](https://img.shields.io/npm/v/grunt-bower-sync.svg?style=flat-square)](https://www.npmjs.com/package/grunt-bower-sync)
+[![devDependency Status](https://img.shields.io/david/mrmlnc/grunt-bower-sync.svg?style=flat-square)](https://david-dm.org/mrmlnc/grunt-bower-sync#info=dependencies)
+[![devDependency Status](https://img.shields.io/david/dev/mrmlnc/grunt-bower-sync.svg?style=flat-square)](https://david-dm.org/mrmlnc/grunt-bower-sync#info=devDependencies)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
