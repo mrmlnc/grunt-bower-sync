@@ -70,6 +70,7 @@ Remark:
 
 ## History
 
+  - **v0.2.1** [2015-12-15] - Fix wrong work with promises in a loop.
   - **v0.2.0** [2015-12-14] - Working with symlinks.
   - **v0.1.5** [2015-09-13] - Eslint (XO) checking.
   - **v0.1.4** [2015-09-10] - The completion of the task, if the src directory does not exist.
