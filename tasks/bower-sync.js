@@ -38,9 +38,10 @@ function bowerSync(grunt) {
           var deps = utils.getListDependencies();
           var copyPromise = fsys.copyDependencies(filepath, f.dest, deps);
           var removePromise = fsys.removeDependencies(f.dest, deps);
-          Promise.all([copyPromise, removePromise]).then(function() {
-            done();
-          });
+          Promise.all([copyPromise, removePromise])
+            .then(function() {
+              done();
+            });
         });
       }
     });

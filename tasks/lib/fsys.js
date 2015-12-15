@@ -4,6 +4,18 @@ var Promise = require('promise');
 var arrDiff = require('arr-diff');
 var cwd = process.cwd();
 
+var _removePromise = function(target, depName) {
+  return new Promise(function (resolve, reject) {
+    fs.remove(path.join(cwd, target, depName), function(err) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+  });
+};
+
 function Fsys(options) {
   this.options = options;
 }
@@ -46,7 +58,7 @@ Fsys.prototype.copyDependencies = function(src, target, deps) {
 Fsys.prototype.removeDependencies = function(target, deps) {
   var options = this.options;
 
-  return new Promise(function(resolve, reject) {
+  return new Promise(function(resolve) {
     var rmDeps = 0;
 
     if (options.updateAndDelete && fs.existsSync(target)) {
@@ -61,16 +73,12 @@ Fsys.prototype.removeDependencies = function(target, deps) {
     if (typeof rmDeps === 'number') {
       resolve();
     } else {
-      rmDeps.forEach(function(depName) {
-        fs.remove(path.join(cwd, target, depName), function(err) {
-          if (err) {
-            reject(err);
-          } else {
-            resolve();
-          }
-        });
+      rmDeps = rmDeps.map(function(depName) {
+        return _removePromise(target, depName);
       });
     }
+
+    resolve(Promise.all(rmDeps));
   });
 };
 

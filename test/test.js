@@ -26,7 +26,7 @@ test('copyMultiple | Copying multiple dependencies', function(t) {
   t.end();
 });
 
-test('Symlink | Create symlinks to dependencies', function(t) {
+test('symlink | Create symlinks to dependencies', function(t) {
   var actual = fs.readdirSync('../tmp/symlink').toString();
   t.is(actual, 'bootstrap,jquery,salvattore');
   t.end();
@@ -34,65 +34,70 @@ test('Symlink | Create symlinks to dependencies', function(t) {
 
 test('removeSingle | Delete only one dependency', function(t) {
   var fsys = new Fsys({ updateAndDelete: true });
-  fsys.removeDependencies('../tmp/removeSingle', ['bootstrap', 'salvattore']).then(function(err) {
-    if (err) {
-      throw new Error(err);
-    }
-
-    var actual = fs.readdirSync('../tmp/removeSingle').toString();
-    t.is(actual, 'bootstrap,salvattore');
-    t.end();
-  });
+  fsys.removeDependencies('../tmp/removeSingle', ['bootstrap', 'salvattore'])
+    .then(function() {
+      var actual = fs.readdirSync('../tmp/removeSingle').toString();
+      t.is(actual, 'bootstrap,salvattore');
+      t.end();
+    })
+    .catch(function(err) {
+      t.fail(err);
+      t.end();
+    });
 });
 
 test('removeMultiple | Delete multiple dependencies', function(t) {
   var fsys = new Fsys({ updateAndDelete: true });
-  fsys.removeDependencies('../tmp/removeMultiple', ['jquery']).then(function(err) {
-    if (err) {
-      throw new Error(err);
-    }
-
-    var actual = fs.readdirSync('../tmp/removeMultiple').toString();
-    t.is(actual, 'jquery');
-    t.end();
-  });
+  fsys.removeDependencies('../tmp/removeMultiple', ['jquery'])
+    .then(function() {
+      var actual = fs.readdirSync('../tmp/removeMultiple').toString();
+      t.is(actual, 'jquery');
+      t.end();
+    })
+    .catch(function(err) {
+      t.fail(err);
+      t.end();
+    });
 });
 
 test('removeSymlink | Delete symlinks to the dependencies', function(t) {
   var fsys = new Fsys({ updateAndDelete: true });
-  fsys.removeDependencies('../tmp/removeSymlink', ['jquery']).then(function(err) {
-    if (err) {
-      throw new Error(err);
-    }
-
-    var actual = fs.readdirSync('../tmp/removeSymlink').toString();
-    t.is(actual, 'jquery');
-    t.end();
-  });
+  fsys.removeDependencies('../tmp/removeSymlink', ['jquery'])
+    .then(function() {
+      var actual = fs.readdirSync('../tmp/removeSymlink').toString();
+      t.is(actual, 'jquery');
+      t.end();
+    })
+    .catch(function(err) {
+      t.fail(err);
+      t.end();
+    });
 });
 
 test('removeAll | Delete all dependencies', function(t) {
   var fsys = new Fsys({ updateAndDelete: true });
-  fsys.removeDependencies('../tmp/removeAll', []).then(function(err) {
-    if (err) {
-      throw new Error(err);
-    }
-
-    var actual = fs.readdirSync('../tmp/removeAll').toString();
-    t.is(actual, '');
-    t.end();
-  });
+  fsys.removeDependencies('../tmp/removeAll', [])
+    .then(function() {
+      var actual = fs.readdirSync('../tmp/removeAll').toString();
+      t.is(actual, '');
+      t.end();
+    })
+    .catch(function(err) {
+      t.fail(err);
+      t.end();
+    });
 });
 
 test('updateOnly | Only update dependencies (without removing)', function(t) {
   var fsys = new Fsys({ updateAndDelete: false });
-  fsys.removeDependencies('../tmp/updateOnly', ['bootstrap']).then(function(err) {
-    if (err) {
-      throw new Error(err);
-    }
-
-    var actual = fs.readdirSync('../tmp/updateOnly').toString();
-    t.is(actual, 'bootstrap,jquery');
-    t.end();
-  });
+  fsys.removeDependencies('../tmp/updateOnly', ['bootstrap'])
+    .then(function() {
+      var actual = fs.readdirSync('../tmp/updateOnly').toString();
+      t.is(actual, 'bootstrap,jquery');
+      t.end();
+    })
+    .catch(function(err) {
+      t.fail(err);
+      t.end();
+    });
 });
