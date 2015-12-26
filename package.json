@@ -1,7 +1,7 @@
 {
   "name": "grunt-bower-sync",
   "description": "Synchronizing Bower dependencies, with the possibility of compiling a list",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": {
     "name": "Denis Malinochkin",
     "url": "www.canonium.com"
