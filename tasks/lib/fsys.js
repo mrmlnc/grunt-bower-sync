@@ -66,7 +66,7 @@ Fsys.prototype.copyDependencies = function(src, target, deps) {
       });
     }
 
-    resolve(Promise.all(deps);
+    resolve(Promise.all(deps));
   });
 };
 
