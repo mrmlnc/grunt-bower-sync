@@ -5,7 +5,7 @@ var arrDiff = require('arr-diff');
 var cwd = process.cwd();
 
 var _copyPromise = Promise.denodeify(fs.copy);
-car _symlinkPromise = Promise.denodeify(fs.ensureSymlink);
+var _symlinkPromise = Promise.denodeify(fs.ensureSymlink);
 var _removePromise = Promise.denodeify(fs.remove);
 
 function Fsys(options) {
