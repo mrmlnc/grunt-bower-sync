@@ -5,7 +5,7 @@ var arrDiff = require('arr-diff');
 var cwd = process.cwd();
 
 var _copyPromise = function(src, target) {
-  return new Promise(resolve, reject) {
+  return new Promise(function(resolve, reject) {
     fs.copy(src, target, {
       clobber: true
     }, function(err) {
@@ -19,7 +19,7 @@ var _copyPromise = function(src, target) {
 };
 
 var _symlinkPromise = function(src, target) {
-  return new Promise(resolve, reject) {
+  return new Promise(function(resolve, reject) {
     fs.ensureSymlink(src, target, function(err) {
       if (err) {
         reject(err);
