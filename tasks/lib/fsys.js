@@ -30,7 +30,6 @@ var _symlinkPromise = function(src, target) {
   });
 };
 
-
 var _removePromise = function(target, depName) {
   return new Promise(function(resolve, reject) {
     fs.remove(path.join(cwd, target, depName), function(err) {
@@ -50,7 +49,7 @@ function Fsys(options) {
 Fsys.prototype.copyDependencies = function(src, target, deps) {
   var options = this.options;
 
-  return new Promise(function(resolve, reject) {
+  return new Promise(function(resolve) {
     if (deps.length === 0) {
       resolve();
     } else {
