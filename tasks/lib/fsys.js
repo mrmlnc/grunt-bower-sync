@@ -4,43 +4,9 @@ var Promise = require('promise');
 var arrDiff = require('arr-diff');
 var cwd = process.cwd();
 
-var _copyPromise = function(src, target) {
-  return new Promise(function(resolve, reject) {
-    fs.copy(src, target, {
-      clobber: true
-    }, function(err) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve();
-      }
-    });
-  });
-};
-
-var _symlinkPromise = function(src, target) {
-  return new Promise(function(resolve, reject) {
-    fs.ensureSymlink(src, target, function(err) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve();
-      }
-    });
-  });
-};
-
-var _removePromise = function(target, depName) {
-  return new Promise(function(resolve, reject) {
-    fs.remove(path.join(cwd, target, depName), function(err) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve();
-      }
-    });
-  });
-};
+var _copyPromise = Promise.denodeify(fs.copy);
+var _symlinkPromise = Promise.denodeify(fs.ensureSymlink);
+var _removePromise = Promise.denodeify(fs.remove);
 
 function Fsys(options) {
   this.options = options;
@@ -61,7 +27,7 @@ Fsys.prototype.copyDependencies = function(src, target, deps) {
           return _symlinkPromise(srcDir, targetDir);
         }
 
-        return _copyPromise(srcDir, targetDir);
+        return _copyPromise(srcDir, targetDir, { clobber: true });
       });
     }
 
@@ -88,7 +54,7 @@ Fsys.prototype.removeDependencies = function(target, deps) {
       resolve();
     } else {
       rmDeps = rmDeps.map(function(depName) {
-        return _removePromise(target, depName);
+        return _removePromise(path.join(cwd, target, depName));
       });
     }
 
