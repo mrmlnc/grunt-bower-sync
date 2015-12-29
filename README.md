@@ -73,6 +73,7 @@ Remark:
 
 ## History
 
+  - **v0.2.3** [2015-12-29] - Fix wrong work with promises in a loop. Again.
   - **v0.2.2** [2015-12-26] - Update `arr-diff` to v2.0.0
   - **v0.2.1** [2015-12-15] - Fix wrong work with promises in a loop.
   - **v0.2.0** [2015-12-14] - Working with symlinks.
