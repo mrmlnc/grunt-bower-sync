@@ -4,8 +4,35 @@ var Promise = require('promise');
 var arrDiff = require('arr-diff');
 var cwd = process.cwd();
 
+var _copyPromise = function(src, target) {
+  return new Promise(resolve, reject) {
+    fs.copy(src, target, {
+      clobber: true
+    }, function(err) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+  });
+};
+
+var _symlinkPromise = function(src, target) {
+  return new Promise(resolve, reject) {
+    fs.ensureSymlink(src, target, function(err) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+  });
+};
+
+
 var _removePromise = function(target, depName) {
-  return new Promise(function (resolve, reject) {
+  return new Promise(function(resolve, reject) {
     fs.remove(path.join(cwd, target, depName), function(err) {
       if (err) {
         reject(err);
@@ -27,31 +54,19 @@ Fsys.prototype.copyDependencies = function(src, target, deps) {
     if (deps.length === 0) {
       resolve();
     } else {
-      deps.forEach(function(depName) {
+      deps = deps.map(function(depName) {
         var srcDir = path.join(cwd, src, depName);
         var targetDir = path.join(cwd, target, depName);
 
         if (options.symlink) {
-          fs.ensureSymlink(srcDir, targetDir, function(err) {
-            if (err) {
-              reject(err);
-            } else {
-              resolve();
-            }
-          });
-        } else {
-          fs.copy(srcDir, targetDir, {
-            clobber: true
-          }, function(err) {
-            if (err) {
-              reject(err);
-            } else {
-              resolve();
-            }
-          });
+          return _symlinkPromise(srcDir, targetDir);
         }
+
+        return _copyPromise(srcDir, targetDir);
       });
     }
+
+    resolve(Promise.all(deps);
   });
 };
 
