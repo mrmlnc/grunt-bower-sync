@@ -4,25 +4,10 @@
   "version": "0.2.3",
   "author": {
     "name": "Denis Malinochkin",
-    "url": "www.canonium.com"
+    "url": "canonium.com"
   },
   "repository": "mrmlnc/grunt-bower-sync",
   "licenses": "MIT",
-  "engines": {
-    "node": ">= 0.10.0"
-  },
-  "scripts": {
-    "test": "xo && rimraf tmp && grunt bowersync && ava test/test.js"
-  },
-  "devDependencies": {
-    "ava": "^0.3.0",
-    "grunt": "~0.4.5",
-    "rimraf": "^2.4.3",
-    "xo": "^0.10.1"
-  },
-  "peerDependencies": {
-    "grunt": "~0.4.5"
-  },
   "keywords": [
     "gruntplugin",
     "grunt",
@@ -37,6 +22,21 @@
     "fs-extra": "^0.26.0",
     "promise": "^7.0.4"
   },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "mocha": "^2.3.4",
+    "rimraf": "^2.4.3",
+    "xo": "^0.10.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.5"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "xo && rimraf tmp && grunt bowersync && mocha test/test.js"
+  },
   "files": [
     "tasks"
   ],
@@ -50,7 +50,8 @@
       "space-before-function-paren": 0
     },
     "envs": [
-      "node"
+      "node",
+      "mocha"
     ]
   }
 }
