@@ -1,11 +1,3 @@
-/*
- * grunt-bower-sync
- * https://github.com/mrmlnc/grunt-bower-sync
- *
- * Copyright (c) 2015 Denis Malinochkin
- * Licensed under the MIT license.
- */
-
 'use strict';
 
 function bowerSync(grunt) {

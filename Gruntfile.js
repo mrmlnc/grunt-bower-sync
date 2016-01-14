@@ -1,11 +1,3 @@
-/*
- * grunt-bower-sync
- * https://github.com/mrmlnc/grunt-assetser
- *
- * Copyright (c) 2015 Denis Malinochkin
- * Licensed under the MIT license.
- */
-
 'use strict';
 
 module.exports = function(grunt) {
