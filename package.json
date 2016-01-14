@@ -18,8 +18,8 @@
     "synchronization"
   ],
   "dependencies": {
-    "arr-diff": "^2.0.0",
-    "fs-extra": "^0.26.0",
+    "array-differ": "^1.0.0",
+    "fs-extra": "^0.26.4",
     "promise": "^7.0.4"
   },
   "devDependencies": {
