@@ -35,7 +35,7 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "xo && rimraf tmp && grunt bowersync && mocha test/test.js"
+    "test": "rimraf tmp && xo && grunt bowersync && mocha test/test.js"
   },
   "files": [
     "tasks"
