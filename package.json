@@ -38,6 +38,7 @@
     "test": "rimraf tmp && xo && grunt bowersync && mocha test/test.js"
   },
   "files": [
+    "lib",
     "tasks"
   ],
   "xo": {

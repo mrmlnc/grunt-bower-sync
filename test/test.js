@@ -1,23 +1,16 @@
 var fs = require('fs');
 var assert = require('assert');
-var Fsys = require('../tasks/lib/fsys');
-
-var existsSync = function(filepath) {
-  try {
-    return fs.statSync(filepath);
-  } catch (err) {
-    return false;
-  }
-};
+var fsys = require('../lib/fsys');
+var utils = require('../lib/utils');
 
 describe('Errors', function() {
   it('dirNotExists | The directory src does not exist', function () {
-    var actual = existsSync('tmp/dirNotExists');
+    var actual = utils.existsSync('tmp/dirNotExists');
     assert.equal(actual, false);
   });
 
   it('copyNull | Empty bower.json file (no dependencies)', function () {
-    var actual = existsSync('tmp/copyNull');
+    var actual = utils.existsSync('tmp/copyNull');
     assert.equal(actual, false);
   });
 });
@@ -41,8 +34,9 @@ describe('Copying', function() {
 
 describe('Removing', function() {
   it('removeSingle | Delete only one dependency', function() {
-    var fsys = new Fsys({ updateAndDelete: true });
-    fsys.removeDependencies('tmp/removeSingle', ['bootstrap', 'salvattore'])
+    fsys.removeDeps('tmp/removeSingle', ['bootstrap', 'salvattore'], {
+      updateAndDelete: true
+    })
       .then(function() {
         var actual = fs.readdirSync('tmp/removeSingle').toString();
         assert.equal(actual, 'bootstrap,salvattore');
@@ -53,8 +47,9 @@ describe('Removing', function() {
   });
 
   it('removeMultiple | Delete multiple dependencies', function() {
-    var fsys = new Fsys({ updateAndDelete: true });
-    fsys.removeDependencies('tmp/removeMultiple', ['jquery'])
+    fsys.removeDeps('tmp/removeMultiple', ['jquery'], {
+      updateAndDelete: true
+    })
       .then(function() {
         var actual = fs.readdirSync('tmp/removeMultiple').toString();
         assert.equal(actual, 'jquery');
@@ -65,8 +60,9 @@ describe('Removing', function() {
   });
 
   it('removeSymlink | Delete symlinks to the dependencies', function() {
-    var fsys = new Fsys({ updateAndDelete: true });
-    fsys.removeDependencies('tmp/removeSymlink', ['jquery'])
+    fsys.removeDeps('tmp/removeSymlink', ['jquery'], {
+      updateAndDelete: true
+    })
       .then(function() {
         var actual = fs.readdirSync('tmp/removeSymlink').toString();
         assert.equal(actual, 'jquery');
@@ -77,8 +73,9 @@ describe('Removing', function() {
   });
 
   it('removeAll | Delete all dependencies', function() {
-    var fsys = new Fsys({ updateAndDelete: true });
-    fsys.removeDependencies('tmp/removeAll', [])
+    fsys.removeDeps('tmp/removeAll', [], {
+      updateAndDelete: true
+    })
       .then(function() {
         var actual = fs.readdirSync('tmp/removeAll').toString();
         assert.equal(actual, '');
@@ -91,8 +88,9 @@ describe('Removing', function() {
 
 describe('Updating', function() {
   it('updateOnly | Only update dependencies (without removing)', function() {
-    var fsys = new Fsys({ updateAndDelete: false });
-    fsys.removeDependencies('tmp/updateOnly', ['bootstrap'])
+    fsys.removeDeps('tmp/updateOnly', ['bootstrap'], {
+      updateAndDelete: true
+    })
       .then(function() {
         var actual = fs.readdirSync('tmp/updateOnly').toString();
         assert.equal(actual, 'bootstrap,jquery');

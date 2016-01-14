@@ -2,12 +2,12 @@
 
 function bowerSync(grunt) {
   var Promise = require('promise');
-  var Utils = require('./lib/utils');
-  var Fsys = require('./lib/fsys');
+  var utils = require('../lib/utils');
+  var fsys = require('../lib/fsys');
 
   grunt.registerMultiTask('bowersync', 'Simple copy Bower dependencies in the dest folder.', function() {
-    // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options({
+    var done = this.async();
+    var opts = this.options({
       bowerFile: 'bower.json',
       dependencies: true,
       devDependencies: false,
@@ -16,26 +16,27 @@ function bowerSync(grunt) {
       symlink: false
     });
 
-    // Initialization Utilities
-    var done = this.async();
-    var utils = new Utils(options);
-    var fsys = new Fsys(options);
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
       if (f.src.length === 0) {
         grunt.log.warn('Source directory not found.');
         done();
-      } else {
-        f.src.forEach(function(filepath) {
-          var deps = utils.getListDependencies();
-          var copyPromise = fsys.copyDependencies(filepath, f.dest, deps);
-          var removePromise = fsys.removeDependencies(f.dest, deps);
-          Promise.all([copyPromise, removePromise])
-            .then(function() {
-              done();
-            });
-        });
+        return;
       }
+
+      f.src.forEach(function(filepath) {
+        var deps = utils.getListOfDeps(opts);
+        var copyPromise = fsys.copyDeps(filepath, f.dest, deps, opts);
+        var removePromise = fsys.removeDeps(f.dest, deps, opts);
+        Promise.all([copyPromise, removePromise])
+          .then(function() {
+            done();
+          })
+          .catch(function(err) {
+            grunt.fail.warn(err);
+            done();
+          });
+      });
     });
   });
 }
