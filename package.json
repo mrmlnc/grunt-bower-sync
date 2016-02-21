@@ -28,9 +28,6 @@
     "rimraf": "^2.4.3",
     "xo": "^0.10.1"
   },
-  "peerDependencies": {
-    "grunt": "~0.4.5"
-  },
   "engines": {
     "node": ">= 0.10.0"
   },
