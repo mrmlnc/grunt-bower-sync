@@ -8,7 +8,6 @@
 [![devDependency Status](https://img.shields.io/david/dev/mrmlnc/grunt-bower-sync.svg?style=flat-square)](https://david-dm.org/mrmlnc/grunt-bower-sync#info=devDependencies)
 
 ## Getting Started
-This plugin requires Grunt `~0.4.5`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -73,6 +72,7 @@ Remark:
 
 ## History
 
+  - **v1.0.1** [2016-02-22] - Compatibility with Grunt version 1.0.0.
   - **v1.0.0** [2016-01-14] - Update deps, simplify conditions and first stable release.
   - **v0.2.3** [2015-12-29] - Fix wrong work with promises in a loop. Again.
   - **v0.2.2** [2015-12-26] - Update `arr-diff` to v2.0.0
