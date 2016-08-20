@@ -70,6 +70,7 @@ Remark:
 
 ## History
 
+  - **v1.0.2** [2016-08-20] - Update dependencies.
   - **v1.0.1** [2016-02-22] - Compatibility with Grunt version 1.0.0.
   - **v1.0.0** [2016-01-14] - Update deps, simplify conditions and first stable release.
   - **v0.2.3** [2015-12-29] - Fix wrong work with promises in a loop. Again.
