@@ -4,14 +4,14 @@ var fsys = require('../lib/fsys');
 var utils = require('../lib/utils');
 
 describe('Errors', function() {
-  it('dirNotExists | The directory src does not exist', function () {
+  it('dirNotExists | The directory src does not exist', function() {
     var actual = utils.existsSync('tmp/dirNotExists');
-    assert.equal(actual, false);
+    assert.ok(!actual);
   });
 
-  it('copyNull | Empty bower.json file (no dependencies)', function () {
+  it('copyNull | Empty bower.json file (no dependencies)', function() {
     var actual = utils.existsSync('tmp/copyNull');
-    assert.equal(actual, false);
+    assert.ok(!actual);
   });
 });
 
@@ -41,7 +41,7 @@ describe('Removing', function() {
         var actual = fs.readdirSync('tmp/removeSingle').toString();
         assert.equal(actual, 'bootstrap,salvattore');
       })
-      .catch(function (err) {
+      .catch(function(err) {
         assert.fail(err);
       });
   });
@@ -54,7 +54,7 @@ describe('Removing', function() {
         var actual = fs.readdirSync('tmp/removeMultiple').toString();
         assert.equal(actual, 'jquery');
       })
-      .catch(function (err) {
+      .catch(function(err) {
         assert.fail(err);
       });
   });
@@ -67,7 +67,7 @@ describe('Removing', function() {
         var actual = fs.readdirSync('tmp/removeSymlink').toString();
         assert.equal(actual, 'jquery');
       })
-      .catch(function (err) {
+      .catch(function(err) {
         assert.fail(err);
       });
   });
@@ -80,7 +80,7 @@ describe('Removing', function() {
         var actual = fs.readdirSync('tmp/removeAll').toString();
         assert.equal(actual, '');
       })
-      .catch(function (err) {
+      .catch(function(err) {
         assert.fail(err);
       });
   });
@@ -95,7 +95,7 @@ describe('Updating', function() {
         var actual = fs.readdirSync('tmp/updateOnly').toString();
         assert.equal(actual, 'bootstrap,jquery');
       })
-      .catch(function (err) {
+      .catch(function(err) {
         assert.fail(err);
       });
   });
