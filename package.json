@@ -32,7 +32,8 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "rimraf tmp && xo && grunt bowersync && mocha test/test.js"
+    "pretest": "rimraf tmp && xo",
+    "test": "grunt bowersync && mocha test/test.js"
   },
   "files": [
     "lib",
